@@ -21,7 +21,7 @@ t_step= int(input("Enter time step in s:"))
 float(t_step)
 #deg to rad
 theata = angle*ma.pi/180
-print("Theata:",theata,"rads")
+#print("Theata:",theata,"rads")
 
 #total flight time
 tflight= t_step*10
@@ -32,12 +32,9 @@ vel_y = int_vel*ma.sin(theata)
 #print(vel_x)
 #print(vel_y)
 
-# equation for vy
-vel_y = g*t_step
 
 #equation for max height
-Hmax = int_h+((int_vel**2)*((ma.sin(theata))**2)/(2*g))   
-
+Hmax = int_h + ((-vel_y**2 )/(2*g))
  #equation for range
 x = vel_x+ tflight
 float(x)
