@@ -9,19 +9,22 @@ import math as ma
 #input values
 g=float(-9.81) 
 int_vel= int(input("Enter starting velocity in m/s:"))
-angle= int(input("Enter angle:"))
+angle= int(input("Enter angle in degrees:"))
 int_h= int(input("Enter starting height in m:"))
+if int_h <0:
+    print("input must be zero or greater, Try Again")
+if int_h<0:
+    int_h= int(input("Enter starting height in m:"))    
+    
+
 t_step= int(input("Enter time step in s:"))
 float(t_step)
 #deg to rad
 theata = angle*ma.pi/180
-print(theata)
-
-#starting time
-t0 = 0.0
+print("Theata:",theata,"rads")
 
 #total flight time
-tflight= t0+t_step
+tflight= t_step*10
 
 #breaking down velocity into x and y components;
 vel_x = int_vel*ma.cos(theata)
@@ -32,14 +35,13 @@ vel_y = int_vel*ma.sin(theata)
 # equation for vy
 vel_y = g*t_step
 
-#equation for y
-y= g*vel_y
-float(y)
-#print(y)
- #range
+#equation for max height
+Hmax = int_h+((int_vel**2)*((ma.sin(theata))**2)/(2*g))   
+
+ #equation for range
 x = vel_x+ tflight
 float(x)
 
-print("Max height is:", y, "meters")
+print("Max height is:",Hmax, "meters")
 print("Range is:",x,"meters")
 print("total time:",tflight, "s")
